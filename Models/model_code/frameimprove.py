@@ -2,16 +2,20 @@ import os
 import glob
 import cv2
 import numpy as np
+from pathlib import Path
+
+# Dynamically find the root directory of this script
+BASE_DIR = Path(__file__).resolve().parent
 
 # Configuration
-input_folder = "dataset_1280x1280"       # Folder containing your extracted frames
-output_folder = "dataset_1280x1280_clean" # Where clean frames will be saved
+input_folder = BASE_DIR / "dataset_1280x1280"
+output_folder = BASE_DIR / "dataset_1280x1280_clean"
 
-blur_threshold = 100.0      # Lower = allows blurrier, Higher = strictly sharp
-similarity_threshold = 0.90 # Skip if image is >90% identical to previous frame
-apply_sharpening = True     # Set to True to sharpen clean frames
+blur_threshold = 100.0
+similarity_threshold = 0.90
+apply_sharpening = True
 
-os.makedirs(output_folder, exist_ok=True)
+output_folder.mkdir(parents=True, exist_ok=True)
 
 def is_blurry(image, threshold=100.0):
     """Calculates variance of Laplacian to measure focus/blur."""
@@ -37,8 +41,7 @@ def sharpen_image(image):
                        [0, -1, 0]])
     return cv2.filter2D(image, -1, kernel)
 
-# Get sorted list of images from input folder
-image_paths = sorted(glob.glob(os.path.join(input_folder, "*.jpg")))
+image_paths = sorted(glob.glob(str(input_folder / "*.jpg")))
 
 if not image_paths:
     print(f"No images found in '{input_folder}'!")
@@ -56,25 +59,21 @@ for img_path in image_paths:
     if img is None:
         continue
 
-    # 1. Filter Blurry Frames
     if is_blurry(img, blur_threshold):
         skipped_blur += 1
         continue
 
-    # 2. Filter Duplicate Frames
     if prev_image is not None:
         similarity = calculate_similarity(img, prev_image)
         if similarity > similarity_threshold:
             skipped_duplicate += 1
             continue
 
-    # 3. Apply Optional Sharpening
     final_img = sharpen_image(img) if apply_sharpening else img
 
-    # 4. Save to Clean Folder
     filename = f"clean_frame_{saved_count:05d}.jpg"
-    cv2.imwrite(os.path.join(output_folder, filename), final_img)
-    
+    cv2.imwrite(str(output_folder / filename), final_img)
+
     prev_image = img
     saved_count += 1
 
