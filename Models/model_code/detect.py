@@ -9,7 +9,7 @@ det_model = YOLO("yolo26n.pt")
 depth_model = YOLO("yolo26s-depth.pt")
 
 # 2. Setup video capture and writer
-input_video_path = "videos/darkspot_f.MOV"
+input_video_path = "videos/IMG_5081.MOV"
 output_video_path = "videos/IMG_5081_processed.mp4"
 
 cap = cv2.VideoCapture(input_video_path)
@@ -154,7 +154,7 @@ while cap.isOpened():
 
     top_detections = pick_priority_detections(structured_detections)
     if top_detections:
-        messages = [build_guidance_message(d) for d in top_detections]
+        messages = [f"{i+1}) {build_guidance_message(d)}" for i, d in enumerate(top_detections)]
     else:
         messages = ["Path clear"]
     print(f"Frame {frame_count}: {messages}  |  all detections: {structured_detections}")
