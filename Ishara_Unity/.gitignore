@@ -52,3 +52,15 @@ Thumbs.db
 # --- Vuforia (since you're using it) ---
 Assets/Vuforia/Editor/VuforiaConfiguration.asset
 Assets/StreamingAssets/QCAR/
+
+
+# Package Manager cache
+*.tgz
+/Packages/*.tgz
+# Large generated/cache files
+*.tgz
+/[Ll]ibrary/PackageCache/
+/[Ll]ibrary/Artifacts/
+/[Ll]ibrary/ShaderCache/
+*.apk
+*.aab
