@@ -1,1 +1,54 @@
-videos/
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Jupyter ---
+.ipynb_checkpoints
+
+# --- Model / dataset artifacts ---
+*.pt
+*.pth
+*.onnx
+*.h5
+*.weights
+*.pb
+*.tflite
+runs/
+logs/
+checkpoints/
+wandb/
+outputs/
+
+# --- Data (usually too large / shouldn't be committed) ---
+data/raw/
+data/processed/
+frames/
+dataset_*/
+*.mp4
+*.avi
+*.mov
+*.zip
+*.tar
+*.tar.gz
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- Env / secrets ---
+.env
+*.env.local
