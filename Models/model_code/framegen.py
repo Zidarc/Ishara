@@ -7,7 +7,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 # Cross-platform video path (model_code/videos/IMG_5081.MOV)
-video_path = BASE_DIR / "videos" / "IMG_5081_converted.mp4"
+video_path = BASE_DIR.parent / "videos" / "IMG_5081.MOV"
 
 # Output dataset directories created directly in the Ishara root folder
 output_640 = BASE_DIR / "dataset_640x640"
