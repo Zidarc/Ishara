@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'IMG_5081.MOV',
+  cutSegments: [
+    {
+      start: 30.957864546875,
+      end: 50.8593488984375,
+      name: '',
+      selected: true,
+    },
+  ],
+}
