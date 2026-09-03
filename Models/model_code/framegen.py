@@ -1,16 +1,23 @@
 import os
 import cv2
 import numpy as np
+from pathlib import Path
 
-# Configuration
-video_path = "campus_video.mp4"  # Replace with your actual video path
-frame_interval = 10              # Take every 10th frame
+# Dynamically find the root directory of the Ishara repository (where this script is saved)
+BASE_DIR = Path(__file__).resolve().parent
 
-output_640 = "dataset_640x640"
-output_1280 = "dataset_1280x1280"
+# Cross-platform video path (Ishara/Models/videos/IMG_5081.MOV)
+video_path = BASE_DIR / "Models" / "videos" / "IMG_5081.MOV"
 
-os.makedirs(output_640, exist_ok=True)
-os.makedirs(output_1280, exist_ok=True)
+# Output dataset directories created directly in the Ishara root folder
+output_640 = BASE_DIR / "dataset_640x640"
+output_1280 = BASE_DIR / "dataset_1280x1280"
+
+# Create output folders inside the root directory
+output_640.mkdir(parents=True, exist_ok=True)
+output_1280.mkdir(parents=True, exist_ok=True)
+
+frame_interval = 10  # Take every 10th frame
 
 def letterbox_resize(image, target_size=(640, 640), color=(114, 114, 114)):
     """Resizes image with aspect-ratio preservation using letterbox padding."""
@@ -34,15 +41,18 @@ def letterbox_resize(image, target_size=(640, 640), color=(114, 114, 114)):
     
     return canvas
 
-cap = cv2.VideoCapture(video_path)
+# Pass string representation of Path object to OpenCV
+cap = cv2.VideoCapture(str(video_path))
 
 if not cap.isOpened():
-    print(f"Error: Could not open video file {video_path}")
+    print(f"Error: Could not open video file at: {video_path}")
+    print("Note: On Linux, file names and extensions are case-sensitive (.MOV vs .mov).")
     exit()
 
 frame_count = 0
 saved_count = 0
 
+print(f"Processing video: {video_path}")
 print("Extracting frames...")
 
 while cap.isOpened():
@@ -57,14 +67,14 @@ while cap.isOpened():
         # Generate padded 1280x1280 frame
         frame_1280 = letterbox_resize(frame, target_size=(1280, 1280))
         
-        # Save both versions
+        # Save both versions into root dataset directories
         filename = f"frame_{saved_count:05d}.jpg"
-        cv2.imwrite(os.path.join(output_640, filename), frame_640)
-        cv2.imwrite(os.path.join(output_1280, filename), frame_1280)
+        cv2.imwrite(str(output_640 / filename), frame_640)
+        cv2.imwrite(str(output_1280 / filename), frame_1280)
         
         saved_count += 1
 
     frame_count += 1
 
 cap.release()
-print(f"Done! Extracted {saved_count} frames into '{output_640}' and '{output_1280}'.")
+print(f"Done! Extracted {saved_count} frames into:\n - {output_640}\n - {output_1280}")
