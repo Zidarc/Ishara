@@ -8,8 +8,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 # Configuration
-input_folder = BASE_DIR / "dataset_1280x1280"
-output_folder = BASE_DIR / "dataset_1280x1280_clean"
+input_folder = BASE_DIR / "dataset_640x640"
+output_folder = BASE_DIR / "dataset_640x640_clean"
 
 blur_threshold = 100.0
 similarity_threshold = 0.90
