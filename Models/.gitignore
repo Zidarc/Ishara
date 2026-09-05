@@ -33,6 +33,7 @@ outputs/
 # --- Data (usually too large / shouldn't be committed) ---
 data/raw/
 data/processed/
+data/
 frames/
 dataset_*/
 batch_videos/
@@ -43,6 +44,7 @@ benchmark_outputs/
 *.zip
 *.tar
 *.tar.gz
+
 
 
 # --- OS / editor junk ---
