@@ -218,6 +218,6 @@ Contributions to Project Ishara are warmly welcomed:
 
 ## 📜 License & Acknowledgments
 
-This project is licensed under the **MIT License**.
+This project is licensed under the **[MIT License](LICENSE)**. See the [LICENSE](LICENSE) file for complete details.
 
 Special thanks to the open-source computer vision community, Ultralytics, and the researchers advancing accessibility technologies for visually impaired individuals worldwide.
