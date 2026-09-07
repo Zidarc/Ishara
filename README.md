@@ -17,7 +17,7 @@
 
 University campuses are designed with the assumption that every student can visually inspect signage, read room placards, and build mental spatial maps on the fly. For blind and low-vision students, navigating unfamiliar, crowded corridors between classes is a high-effort task requiring memorized routes and tactile exploration. Existing assistive tools (white canes, guide dogs, tactile maps, RFID beacons) are either strictly **proximity-only** or dependent on **expensive, static physical infrastructure**.
 
-**Project Ishara** bridges this critical gap within the **Healthcare & Assistive Technology** domain. By combining real-time edge computer vision (object detection + monocular depth estimation) with an **Android AR client (Unity)**, Ishara empowers students with continuous spatial awareness, dynamic obstacle avoidance, and non-visual audio-haptic navigational guidance directly from an off-the-shelf smartphone.
+**Project Ishara** bridges this critical gap within the **Healthcare & Assistive Technology** domain. By combining real-time edge computer vision (object detection + monocular depth estimation) with an **Android AR client (Unity)**, Ishara empowers students with continuous spatial awareness, dynamic obstacle avoidance through two parallel output channels: a live AR camera overlay for partially sighted users who retain some functional vision, and audio-haptic cues for users who need fully non-visual guidance.
 
 > [!WARNING]
 > ### 🩺 Healthcare & Assistive Aid Advisory (Non-Reliance Notice)
@@ -64,10 +64,13 @@ flowchart LR
         AUDIO["3D Spatialized Audio Cues"]
         HAPTIC["Haptic Feedback Alerts"]
         ALERTS --> AR
+        AR --> VISUAL["AR Visual Overlay\n(Camera feed + markers)"]
         AR --> AUDIO
         AR --> HAPTIC
         CLIENT_BUILD["Deployable Android APK"]
+        VISUAL -.-> CLIENT_BUILD
         AUDIO -.-> CLIENT_BUILD
+        HAPTIC -.-> CLIENT_BUILD
     end
 ```
 
