@@ -1,0 +1,112 @@
+# ==========================================
+# Master .gitignore for Ishara
+# ==========================================
+
+# --- Media & Video Datasets (Heavy binary files) ---
+*.mp4
+*.MOV
+*.mov
+*.avi
+*.mkv
+*.webm
+*.zip
+*.tar
+*.tar.gz
+*.bin
+*.llc
+datasets/raw_videos/*
+!datasets/raw_videos/.gitkeep
+!datasets/raw_videos/batch_videos/
+datasets/raw_videos/batch_videos/*
+!datasets/raw_videos/batch_videos/.gitkeep
+datasets/processed/*
+!datasets/processed/.gitkeep
+!datasets/processed/raw/
+!datasets/processed/processed/
+datasets/processed/raw/*
+!datasets/processed/raw/.gitkeep
+datasets/processed/processed/*
+!datasets/processed/processed/.gitkeep
+datasets/benchmark_outputs/
+dataset_*/
+
+# --- Model Checkpoints & Large Weights ---
+*.pt
+*.pth
+*.onnx
+*.weights
+*.tflite
+*.pb
+*.h5
+models/base/weights/*
+!models/base/weights/.gitkeep
+models/trained/checkpoints/*
+!models/trained/checkpoints/.gitkeep
+runs/
+test_results/
+checkpoints/
+
+# --- Unity Generated & Cache Folders ---
+Ishara_Unity/[Ll]ibrary/
+Ishara_Unity/[Tt]emp/
+Ishara_Unity/[Oo]bj/
+Ishara_Unity/[Bb]uild/
+Ishara_Unity/[Bb]uilds/
+Ishara_Unity/[Ll]ogs/
+Ishara_Unity/[Uu]serSettings/
+Ishara_Unity/[Mm]emoryCaptures/
+*.apk
+*.aab
+*.unitypackage
+*.app
+sysinfo.txt
+*.stackdump
+
+# --- Unity Packages & Cache ---
+Ishara_Unity/Packages/*.tgz
+Ishara_Unity/Library/PackageCache/
+Ishara_Unity/Library/Artifacts/
+Ishara_Unity/Library/ShaderCache/
+
+# --- Python Virtual Environments & Cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+.ipynb_checkpoints/
+wandb/
+*.errors.txt
+
+# --- OS & Editor Files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# --- Environment & Secrets ---
+.env
+*.env.local
