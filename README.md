@@ -1,12 +1,13 @@
 # Ishara (إشارة) — Assistive Campus Navigation for Visually Impaired Students
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Track-Healthcare%20%26%20Assistive%20Tech-0ea5e9" alt="Healthcare Track" />
   <img src="https://img.shields.io/badge/Platform-Android%20APK-green?logo=android" alt="Android APK" />
   <img src="https://img.shields.io/badge/Engine-Unity%206%20%2F%202022%20LTS-black?logo=unity" alt="Unity" />
   <img src="https://img.shields.io/badge/AI%20Vision-YOLO%20%2B%20Monocular%20Depth-blue" alt="AI Vision" />
+  <img src="https://img.shields.io/badge/Privacy-On--Device%20Shield-10b981" alt="Privacy Shield" />
   <img src="https://img.shields.io/badge/Optimization-Intel%20OpenVINO-orange?logo=intel" alt="OpenVINO" />
   <img src="https://img.shields.io/badge/Demo-Streamlit-red?logo=streamlit" alt="Streamlit" />
-  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python" alt="Python" />
   <img src="https://img.shields.io/badge/License-MIT-purple" alt="License" />
 </p>
 
@@ -16,7 +17,15 @@
 
 University campuses are designed with the assumption that every student can visually inspect signage, read room placards, and build mental spatial maps on the fly. For blind and low-vision students, navigating unfamiliar, crowded corridors between classes is a high-effort task requiring memorized routes and tactile exploration. Existing assistive tools (white canes, guide dogs, tactile maps, RFID beacons) are either strictly **proximity-only** or dependent on **expensive, static physical infrastructure**.
 
-**Project Ishara** bridges this critical gap. By combining real-time edge computer vision (object detection + monocular depth estimation) with an **Android AR client (Unity)**, Ishara empowers students with continuous spatial awareness, dynamic obstacle avoidance, and non-visual audio-haptic navigational guidance directly from an off-the-shelf smartphone.
+**Project Ishara** bridges this critical gap within the **Healthcare & Assistive Technology** domain. By combining real-time edge computer vision (object detection + monocular depth estimation) with an **Android AR client (Unity)**, Ishara empowers students with continuous spatial awareness, dynamic obstacle avoidance, and non-visual audio-haptic navigational guidance directly from an off-the-shelf smartphone.
+
+> [!WARNING]
+> ### 🩺 Healthcare & Assistive Aid Advisory (Non-Reliance Notice)
+> **Auxiliary Assistive Aid Only — Not for Sole Reliance**
+>
+> Project Ishara is an auxiliary perception tool intended solely to augment environmental spatial awareness for blind and low-vision individuals. **It is NOT a certified medical diagnostic device, clinical prosthesis, or primary mobility substitute.**
+>
+> Users and caregivers must **NEVER** place sole reliance on this software for solitary navigation or life safety. It is engineered to complement, and must always be used alongside, primary mobility aids including the **white cane, guide dog, and certified Orientation & Mobility (O&M) training**. Always maintain primary physical contact and environmental awareness while navigating.
 
 > 📄 **Read the Full Academic Problem Statement**: [docs/PROBLEM_STATEMENT.md](docs/PROBLEM_STATEMENT.md)
 
@@ -202,6 +211,19 @@ To keep the repository fast, clean, and collaborative:
 - **Raw video files** (`.mp4`, `.mov`, `.MOV`, `.avi`), **large model weights** (`.pt`, `.bin`, `.onnx`), and **build caches** (`Library/`, `Builds/`, `.venv/`) are excluded from Git via the root `.gitignore`.
 - Full raw benchmark video sets (`batch_videos.zip`) and model weights are accessible via our **GitHub Releases** and academic cloud mirrors.
 - Local directories retain designated `.gitkeep` markers so the folder structure is always preserved upon cloning.
+
+---
+
+## 🛡️ Healthcare Privacy, Ethics & Data Protection
+
+In assistive healthcare and public university settings, privacy and data ethics are paramount:
+
+1. **100% On-Device / Local Processing Guarantee**:
+   All computer vision models (object detection and monocular depth) execute strictly on the client hardware or local session memory. Camera streams, depth representations, and positional coordinates are **never transmitted to external cloud servers** or third-party APIs.
+2. **Healthcare Privacy Shield (Anonymization Mode)**:
+   Our pipeline includes an automated privacy shield that detects pedestrians and dynamically applies Gaussian blurring to faces and human silhouettes before rendering or video compilation. This protects student identity and bystander privacy in compliance with institutional review board (IRB) and HIPAA data principles.
+3. **Zero Data Retention**:
+   Video uploads and spatial buffers are ephemeral and automatically purged from temporary memory upon session completion, leaving zero residual biometric data on disk.
 
 ---
 
